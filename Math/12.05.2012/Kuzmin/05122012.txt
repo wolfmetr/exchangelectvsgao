@@ -1,0 +1,94 @@
+05.12.2012
+Численное решение дифференциальных уравнений
+du/dt = f(t,u), u(t_0) = u_0(1)
+1. Метод Эйлера(явный)
+Пусть уравнение (1) имеет единственное решение на отрезке [a,b]
+Пусть t_0 = a, t_i = t_0+h*i, i from 1 to n, h = (b-a)/n
+Будем искать приближенное решение в виде y_0,y_1,...,y_n, таких что y_i ~ u(t_i)
+(y_(i+1) - y_i)/h = f(t,y_i)
+y_(i+1) = y_i + h*f(t,y_i) 
+y_0 = u_0
+
+2. Неявный метод Эйлера
+(y_(i+1)-y_i)/h = (f(t,y_i)+f(t,y_(i+1))/2
+y_(i+1) - h/2 * f(t_(i+1),y_(i+1)) = y_i + h/2 f(t_i,y_i), y_0 = u_0
+Говорят, что приближенное решение(1) сходится к частному решению в точке T from [a,b], если
+h^n = (T-a)/n, t^(n)_i = a+h^(n)*i, i from {0 to n}
+y^(n)_i - приближенное решение (1) c шагом h^(n) и lim(y^n)_n = u(T) (n to inf)
+Метод сходится на отрезке (a,b], если он сходится для любого T from (a,b]
+
+z^(n)_(i+1) = y^(n)_(i+1) - u(t_(i+1)), i from {0,...,n-1}
+(y^(n)_(i+1) - y^(n)_i)/(h^n) = f(t_i,y^(n)_i) = (z^(n)_(i+1)-z^(n)_i)/(h^n) + (u(t_(i+1) - u(t_i))/(h^n)
+z^(n)_(i+1)-z^(n)_i)/(h^n) = f(t_i,u(t_i)+z^(n)_i) - (u(t_(i+1) - u(t_i))/(h^n) +- f(t_i,u(t_i))
+z^(n)_(i+1)-z^(n)_i)/(h^n) = phi^(n)_i + psi^(n)_i
+
+phi^(n)_i = f(t_i,u(t_i)) - u(t_(i+1) - u(t_i))/(h^n) (2)
+psi^(n)_i = f(t_i,u(t_i)+z^(n)_i) - f(t_i,u_(t_i)) (3)
+
+phi^(n)_n - погрешность аппроксимации
+phi^(n)_n -> 0 <==> y^(n)_n -> u(t_n) при n -> inf
+
+Пусть существует с: max|u"(t)| <= c(t from a to b)
+Тогда по формуле Тейлора
+u(t_(i+1)) = u(t_i) + (t_(i+1) - t_i)*u'(t_i)+O(|t_(i+1)-t_i|^2)
+t_(i+1)-t_i = h^(n)
+
+(u(t_(i+1) - u(t_i))/(h^(n)) = u'(t_i) + O(h^(n)) = f(t_i,u(t_i))+o(h^(n))
+phi^(n)_i = O(h^(n)) => phi^(N)_n -> 0 при n-> inf ==> у^(n)_n -> u(t_n) при y^(n)_n -> u(t_n) при n-> inf
+
+Пусть |delta_f/delta_u|<= c_2 тогда
+psi^(n)_i = z^(n)_i * delta_f(t_i,u(t_i)+teta*z^(n)_i) teta from [0,1] ==>
+psi^(n)_i = O(z^n)_i) => psi^(n)_i -> 0 при z^(n)_i -> 0 при n -> inf
+
+Метод Рунге - Кутта второго порядка
+du/dt = f(t,u), u(a) = u_0 (1)
+
+t_(i+1/2) = t_i + h/2
+y_(i+1/2) = y_i + h*f(t_i,y_i)/2(по методу Эйлера)
+(y_(i+1)-y(i))/h = f(t_(i+1*2),y_(i+1/2))
+В итоге:
+y_(i+1) = y_i + h*f(t_i+h/2,y_i+h*f(t_i,y_i)/2)
+
+Оценим аппроксимацию
+phi_i = (u(t_(i+1) - u(t_i))/(h^n) - f(t_(i+1*2),u(t_i)+h*f(t_i,y_i)/2)
+Пусть max|u"'()<=c1 (t from a to b)
+Тогда u(t_(i+1)) = u(t_i)+(t_(i+1)-t_i)*u'(t_i)+((t_(i+1)-t_i)^2)/2*u"(t) + O(|t_(i+1)-t_i|^3)
+u(t_(i+1) - u(t_i))/(h^n) = u'(t_i) + h*u"(t_i)/2 + O(h^2)
+
+Пусть |delta_f/delta_t|<=c_2, |delta_f/delta_u| <=c3
+f(t_i+h/2,u(t_i)+h/2*f(t_i,u(t_i))) = (t_i,u(t_i)) + h/2 * delta_f(t_i,u(t_i))/delta_t + h/2 * delta_f(t_i,u(t_i))/delta_u+ O(h^2) = 
+f(t_i,u(t_i)) + h/2[d(f(t_i,u(t_i))/dt + f(t_i,u(t_i))*f(t_i,u(t_i))/du]+O(h^2) = f(t_i,u(t_i)) + h*u"(t_i)/2 + O(h^2)
+
+d^u/dt^2 = d_f/d_t + df/du * du/dt = df/dt+f(t,u)*df/du
+
+phi_i = u'9t_i)+h*u"(t_i)/2 +O(h^2) - f(t_i,u(t_i))-h*u"(t_i)+O(h^2) = u'(t_i)-f(t_i,u(t_i))+O(h62) = O(h^2)
+
+k^(1)_i = f(t_i,y_i)
+k^(2)_i = f(t_i + h/2,y_i+h*k^(1)_i/2)
+y_(i+1) = y_i+h*k^(2)_i
+
+k^(1)_i = f(t_i,y_i)
+k^(2)_i = f(t_i + a_2*h,y_i+b21*k^(1)_i)
+k^(3)_i = f(t_i+a_3h,y_i + b_31*k^(1)_i + b_32*k^(2)_i)
+...
+k^(m)_i = f(t_i+a_m*h,y_i+b_m1*k^(1)_i+...+b(m_im_(i-1))*k^(m-1)_i)
+(y_(i+1)-y_i)/h = sum(sigma_j*k^(j)_i)(from 1 to m) 
+Чтобы (3) аппроксимировало (1) необходимо чтобы sum(sigma_j) = 1(from 1 to n)
+
+m = 1
+k^(1)_i = f(t_i,y_i)
+(y_(i+1) - y_i)/h = sigma_1*f(t_i,y_i)
+
+Многошаговые методы решения задачи Коши
+Методы Адамса(явные)
+(y_i - y_(i-1))/h = sum(b_j*f(t_i-j,y_(i-j))
+Методы Адамса(неявные)
+(y_i - y_(i-1))/h = sum(b_j*f(t_(i-j,y_(i-j)))(from 0 to m)
+При m=1^
+(y_i - y_(i-1))/h = f(t_(i-1),y_(i-1))
+phi_i = (u(t_i)-u(t_(i-1)))/h - sum(b_j * f(t_(i-j),u(t_(i-j)))(from 0 to m) = (u(t_i) - u(t_(i-j)))/h - sum(b_j *u'(t_(i-j)))(from 0 to m)
+u(t_(i-j)) = u(t_i)+sum((-1)^k*j^(k)*h^(k)*u(k)(t_i))/(k!) + O(h^p+1)
+u'(t_(i-j)) = u'(t_i)+sum((-1)^k*j^k*h^k*u^(k-1)(t_i)/k!(k
+ from 1 to p)+O(h^p)
+
+phi_i = - sum((-1)^k*h^k*u^(k-1)(t_i)/k! + O(h^p) - sum(b_j)*sum((-1)^k*j^k*h^k*u^(k-1)(t_i)/k!
