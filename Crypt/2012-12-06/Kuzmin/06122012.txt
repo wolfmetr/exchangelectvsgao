@@ -1,0 +1,32 @@
+06.12.2012
+Протокол TLS
+		|заг-к|data|<16 kB
+Браузер -------------------->сервер
+
+По кадрам:
+1
+2)Начальное значение
+
+enc(K_(b->s),data,CTR_(b->s) K_(b->s)=(K_enc,K_mac)
+1)tag = S(K_MAC,[++CTR_(b->s)||заг-к||data])
+2)Набивка сообщения [header||data||tag]
+3)Шифрование CBC на K_enc со случ. вектором инициализации
+4)Доб-е заголовка
+
+Расшифрование dec(K_(b->s),ШТ,CTR_(b->s))
+1)Расшифрование CBC K_enc
+2)[header||data||tag] набивка - если неправильная- bad_record_MAC
+3)Проверка tag [++CTR_(b->s)||header||data]. Счётчик не передаётся MAC неправильный bad_record_MAC
+
+1.Ошибки TLS
+1)Выбор IV(последний блок ШТ - chaining IV)
+2)Существование 2-х ошибок - decryption_failed,bad_record_MAC
+
+802.11b WEP for all m,p CRC(m xor p) = CRC(m) xor F(p)
+RC4 |	m	|CRC(m)|
+ xor| PRG(IV || K) |
+ -----------------------
+ШТ  |IV|port=80		|CRC(m)|
+xor |00|00..|xx|0...|F(xx)|
+
+xx= 25 xor 80
