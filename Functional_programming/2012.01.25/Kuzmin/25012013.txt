@@ -1,0 +1,30 @@
+25.01.2013
+Винокуров Сергей Фёдорович
+Scheme, Racket
+Лямбда-исчисление
+f(x) = график = мн-во
+f:X->Y,x from X, f(x) from Y = процесс lambda x.f(x) = lambda x.[f x]
+(lambda x.[f x])a = f(a)
+lambda x.[exp x] = x
+exp = lambda x.[1+x/1 + x^2/2 + ... ]
+N = lambda x.[x^2-2x-1]
+N(a+1) = (a+1)^2 - 2*(a+1)+1
+lambda f.[f(f x)]
+2 = lambda f.[lambda x.[f(x)]]
+Sum = lambda a.lambda b.lambda c[b((ab)c)]lambda abc.
+Sum 2 = lambda b.lambda c.[b((2b)c)]
+2b = lambda x[b(bx)]
+(2b)c = b(bc) = lambda b.lambda c[b(b(bc))] = 3
+Sum 3 = lambda abc[b((3b)c)] = lambda bc[b(b(b(bc)))] = 4
+A = lambda f gab.[((fa)(ga))b]
+M = lambda f ga[f(g a)]
+P= lambda f g[fg]
+(A 2)3 = 
+A 2 = lambda gab.[((2 a)(g a))b] = lambda gab[(lambda x[a(ax)](ga))b]
+2 x = lambda x.[a(a x)]
+
+(A 2)3 = lambda ab[((lambda x[a(ax)](3 a))b] = lambda ab[[a(a(3a))]b] = lambda ab[a(a[lambda x(a(a(ax)))])b] = lambda ab[a(a(a(a(ab))))]
+(P 2)2 = 
+P 2 = (lambda fg[fg])2 = lambdag[2g]=lambda g[g(gx)]
+(P 2)2 = 2(2x)
+(P n)m = lambda g(g(g... x))
