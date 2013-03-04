@@ -1,0 +1,17 @@
+(define (sort-list l)
+  (define first-element(if (not (null? 1)) (car l) 0))
+  (cond ((null? 1) (' ()))
+        (else (cons (findsmall l first-element)(sort-list (remove-elem l (findsmall l first-element)))))))
+
+(define findsmall
+  (lambda (tl b)
+    (cond ((null? tl) b)
+          ((< (car tl) b)(set! b (car tl))(findsmall (cdr tl) b))
+          (else (find small (cdr tl) b)))))
+
+(define remove-elem
+  (lambda (tl2 a)
+    (cond ((null? tl2) (' ()))
+          ((= a (car tl2)) (cdr tl2))
+          (else (cons (car tl2)(remove-elem (cdr tl2) a))))))
+  
