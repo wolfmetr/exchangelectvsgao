@@ -1,0 +1,5 @@
+﻿27.03.2013
+Ввод и вывод
+(open-input-file имя [#:mode mode-flag]
+
+mode-flag = 'binary|text' (default - binary)

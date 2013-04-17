@@ -1,0 +1,1 @@
+(define inp (open-input-file "dat" #:mode 'text'))

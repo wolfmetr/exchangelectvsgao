@@ -1,0 +1,7 @@
+(define (rev2 x y)
+  (cond [(empty? x) y]
+        [(not(list? x)) x]
+        [ #t (rev2 (cdr x)(cons (rev2 (car x) '()) y)) ]
+        ))
+
+        

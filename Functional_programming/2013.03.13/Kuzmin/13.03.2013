@@ -1,0 +1,17 @@
+﻿13.03.2013
+Параллельная рекурсия
+(define f... (g... (f...)...(f...)...))
+Взаимная рекурсия
+(define (rev4 x y)
+  (cond 
+    [(empty? x) y]
+    [#t (rev4 (cdr x)
+              (cons (rev3 (car x) ) y))]
+    )
+  )
+(define (rev3 x)
+  (cond 
+    [(not (list? x)) x]
+    [#t (rev4 x' ()) ]
+    ))
+Рекурсия высших порядков
