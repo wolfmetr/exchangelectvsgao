@@ -1,0 +1,16 @@
+05.09.2013
+[For all x nod(x,0,x) & For all x,y,z,u(u = x%y & nod(y,u,z) -> nod(x,y,z))] -> Exists x nod(120,36,x)
+nod(x1,0,x);
+(!(u2 = x2%y2 V nod(y2,u2,z2) V nod(x2,y2,z2)));
+!nod(120,36,x3);
+
+Написать определение для факториала и чисел Фибоначчи
+fact(0,1) & For all x,y,z,u (z = x-1 & fact(z,u) & y = u*x -> F(x,y)] -> Exists y F(3,y)
+
+fact(0,1);(! z = x-1 V !fact(z,u) V !y = u*x -> F(x,y)
+
+fib(0,1) & fib(1,1)
+(x = n - 1 & y = n-2 & fib(x,z) & fib(y,t) & u = z + t -> fib(n,u))
+
+fib(n,x,y)
+[fib(1,1,1) & (t = n - 1 fib(t,u,x) & y = u + x -> F(n,x,y))] -> Exists x fib(50,-,x)

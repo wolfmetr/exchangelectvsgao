@@ -1,0 +1,78 @@
+05.02.2014
+Квантовые преобразования.
+Q-бит.
+phi = a↑ + b→
+|a|^2 + |b|^2 = 1
+phi = (a)
+	  (b)
+A(phi + ksi) = Aphi + Aksi
+A*A = E.
+
+A = (alpha  beta)
+	(delta gamma)
+
+A = (alpha*  beta*)
+	(delta* gamma*)
+
+(x + iy)* = x - iy
+(x+iy)(x-iy) = x^2 + y^2
+
+Преобразование Паули
+
+I = (1 0)
+	(0 1)
+	
+X = (0 1)
+	(1 0)
+
+Y = (0  1)
+	(-1 0)
+
+Z = (1  0)
+	(0 -1)
+	
+Y*Y = (0 -1)( 0 1) = (1 0) 
+	  (1  0)(-1 0)	 (0 1)
+
+X↑ = →
+X→ = ↑
+
+Преобразование.
+
+H = 1/sqrt(2) * (1  1)
+				(1 -1)
+				
+X Y |phi psi>
+|phi psi> = phi + psi
+
+(X + Y)(phi + psi) - (Xphi)+(Ypsi)
+
+phi = a↑ + b→ = a(1) + b(0) = (a)
+				 (0)	(1)	  (b)
+psi = c↑ + d→ = c(1) + d(0) = (c)
+				 (0)	(1)	  (d)
+|phi psi> = phi + psi = (a (c)) = (ac)
+						(  (d))	  (ad)	
+						(b (c))	  (bc)
+						(  (d))	  (bd)
+||phi psi>|^2 = (ac)^2 + (ad)^2 + (bc)^2 + (bd)^2 = |a|^2||c|^2 + |c|^2||d|^2| + |b|^2|c|^2 + |b|^2|d|^2 = |a|^2(|c|^2 + |d|^2) + |b|^2( |c^2| + |d|^2)) = 
+|a|^2 + |b|^2 = 1
+|phi psi> = (alpha) = 1/sqrt(2) (1) = phi + psi
+			(beta )				(0)
+			(delta)				(0)
+			(gamma)				(1)
+			
+(X x Y)(phi x psi) = (0 0	0 1)(ac) = (bd )
+					 (0 0  -1 0)(ad)   (-bc)
+					 (0 1   0 0)(bc)   (ad )
+					 (-1 0  0 0)(bd)   (-ce)
+					 
+С_not = (1 0 0 0)
+		(0 1 0 0)
+		(0 0 0 1)
+		(0 0 1 0)
+
+C_not • |0 0> = |0 0>
+C_not • |0 1> = |0 1>
+C_not • |1 0> = |1 1>
+C_not • |1 1> = |1 0>

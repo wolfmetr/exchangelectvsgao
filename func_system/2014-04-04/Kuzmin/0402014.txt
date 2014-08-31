@@ -1,0 +1,41 @@
+04.04.2014
+A x B = (A x E)(E x B) = (E x B)(A x E)
+C = (c_ij)^nm_(i,j=1) = A x B, A = (a_ij)^n_(i,j=1), N = (b_ij)^m_i,j=1
+(A x E) = D = (d_ij)^(nm)_(i,j=1), (E x B) = G = (g_ij)^(nm)_(i,j=1)	E = (e_ij) 	e_ij = {0(i!=j), 1(i=j)}
+C_(im+k,jm+t) = a_ij•bkt	H = (h_ij)^(nm)_(i,j=1) = D•G	P = (p_ij)^nm_(i,j=1) = G • D
+d_(im+k,jm+t) = a_ij•e_kt = {a_ij(k=t),0(k!=t)}
+g_(im+k,jm+t) = e_ij•b_kt = {b_kt(i=j),0(i!=j)}
+
+Существует 6 невырожденных 2х2 матриц над F_2
+B_1 = 	(1 0)	B_2 =	(0 1)	B_3 = 	(1 1)	B_4 = 	(1 0)	B_5 =	(1 1)	B_6 =	(0 1)
+		(0 1)			(1 0)			(0 1)			(1 1)			(1 0)			(1 1)
+Если A from M^(xn), то A = (A1 x E x ... x E)(E x A2 x E x ... x E)...(E x ... x E x An)
+F_2	V_(i+2) = V_i + V_(i+1), V0 = 0, V1 = 1,	0<=i<2^n - 2, то ||[v]||>=2/3 2^n -1 
+Если u from [V], то exists A1,...,An, т.ч. u = (A1 x ... x An)v
+u^0 = v, u^i = (E x ... x E x A_i x E x ... x E)u^(i-1). Тогда u = u^n
+u^0 = (011011011011...)	(B1 x E x ... x E) u = u0
+x^0 = 	(011011011...)
+		(101101101...), если n - чётное.
+либо
+x^0 = 	(011011011...)
+		(110110110...), если n - нечётное.
+		
+x^1 = A_1 • x^0
+
+T_i = E x ... E x A_i x E x ... x E		S_i = E x ... x E x B_i x E ... x E
+u = T1 • T2 • ... • Tn • v
+/*
+Photo required
+*/
+u^0 = v, u^1 = T^(A1)_1 • u^0
+(AB)xE  (A x E)(B x E)	C = (c_ij) = AB		A = (a_ij)	B = (b_ij)
+D = (d_ij) = (AB)xE		G = (g_ij) = A x E	H = (h_ij) = (B x E)
+c_ij = sum(a_ik • B_kj)(k from 1 to n)		g_(im+k,jm+t) = {a_ij(k=t),0(k!=t)},	h_(im+k,jm+t) = {b_ij(k=t),0(k!=t)
+d_(im+k,jm+t) = sum()
+
+u^~^1 = {u^1(A1 from {B1,B5,B6}), T^(B2)_1 • u^1(A1 from {B2,B3,B4})}
+тогда u^~^1 удовлетворяет ЛРП S_(n+2) = S_n + S_(n+1)(1) и при этом ||u^~^1|| = ||u^1||
+u^~^1 = {u^1(A1 from {B1,B5,B6}), T^(B2)_1 • u^~^1(A1 from {B2,B3,B4})}
+
+Аналогично, рассуждая для всех i = 2,3,...,n, получим: ||u|| = ||u^~^n|| и u^~_n удовлетворяет (1)
+for all u from [v] ||u|| v+ min 

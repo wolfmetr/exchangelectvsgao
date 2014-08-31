@@ -1,0 +1,75 @@
+011011011011 from F_2			x^2 + x + 1
+sum_snx^n(n from 0 to n)		ksi^2 + ksi + 1 = 0
+d^2 001001001...				(ksi^2)^2 + ksi^2 + 1 = 0
+d^1 010010101...
+d^0 100100100...
+
+s_n = d^1_n + d^2_n
+
+F_4 + | 0  1  a2 a3
+-------------------
+	0 | 0  1  a2 a3
+	1 | 1  0  a3 a2
+	a2| a3 a2 0  1 
+	a3| a2 a3 1  0
+	
+	x | 1  a2  a3
+	1 | 1  a2  a3
+	a2| a2 a3  1
+	a3| a3 1   a2
+	
+ksi_0 = a2
+ksi^0 = 1
+ksi^1 = a2
+ksi^2 = a3
+
+ksi^0 + ksi^1 + ksi^2 = 1 + a2 + a3 = 0
+(ksi + 1 = ksi^2)            (ksi^2 + 1 = ksi)    = 1
+(ksi^2 + 1 = ksi)		+	 (ksi^4 + 1 = ksi^2)  = 1
+(ksi^0 + 1 = 0)			     (ksi^0 + 1 = 0)      = 0
+					|0, n % 3 = 0
+ksi^n + (ksi^2)^n = {1, n % 3 = 1
+					|1, n % 3 = 2
+					
+F_(n+2) = F_(n+1) + F_n
+
+x^2 - x - 1
+x_1,2 = (1 +- sqrt(5)) /2
+phi = (1 + sqrt(5))/2
+phi^ = (1-sqrt(5))/2
+F_n = phi^n + (phi^)^n
+
+x^4 - 1
+a_(n+r) = a_n
+x^3 + 1 = (x+1)(x^2 + x + 1)
+d^2_n = alpha•1^n + beta•ksi^n + gamma•ksi^(2n)
+0 = alpha + beta + gamma
+0 = alpha + beta•ksi + gamma•ksi^2
+1 = alpha + beta•ksi^2 + gamma•ksi
+
+(1  1     1    )(alpha)   (0)
+(1  ksi   ksi^2)(beta ) = (1)
+(1  ksi^2  ksi )(gamma)	  (0)
+
+alpha = ksi^2 + ksi = 1
+d^2_n = 1•1^n + ksi•ksi^n + ksi^2•ksi^(2n)
+
+d^1_n = 1•1^n + ksi^2•ksi^n + ksi•ksi^(2n)
+d^0_n = 1•1^n + 1•ksi^n + 1•ksi^(2n)
+
+S_n = d^1_n + d^2_n = ksi^n + (ksi^2)^n
+
+(t_2n  ) = (a11  a12)(S_2n)
+(t_2n+1)   (a21  a22)(S_2n+1)
+
+t_2n = a11S_2n + a12S_(2n+1) = a11ksi^2n + a12(ksi^2)^2n = a11(ksi^2)^n + a12ksi^n
+
+t_(2n+1) = a21S_2n + a22S_(2n+1) = a21ksi^2n + a22(ksi^2)^2n = a21(ksi^2)^n + a22ksi^n
+
+a11 + a12 = alpha + beta
+a21 + a22 = alpha•ksi + beta•ksi^2
+
+g0(x) = sum(S_2nx^n) = sum(S_nx^n) = f(x)
+g1(x) = sum(S_(2n+1)x^n) = 1 + sum(S_nx^(n+1)) = 1+ f(x)
+f(x) = sum(S_nx^n) = sum(S_2nx^2n) + sum(S_(2n+1)x^(2n+1)) = g0(x^2) + x•g_1(x^2)
+sum(t_nx^n) = sum(a11S_2n + a12S_(2n+1))x^2n + sum(a21S_2n + a22S_(2n+1))x^(2n+1) = a11 f(x^2) + a12(1 + x^2 f(x^2)) + a21xf(x^2) + a22x(1 + x^2f(x^2))

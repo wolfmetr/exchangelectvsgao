@@ -1,0 +1,45 @@
+15.04.2014
+Алгоритм Дойча-Джоша
+B = {f: F^2 -> F_2 | #{x from F^n_2|f(x)=0} = 1/2 2^n }
+
+C = {f: F^n_2 -> F_2 | f(x)=0 for all x from F^n_2} U {f: F^n_2 ->F_2 | f(x)=1 for all x from F^n_2}
+
+Пусть f from B U C
+Определить что истинно f from B или f from C
+
+MinTime = 2
+MaxTime = 1/2 2^n + 1
+
+  |0>  	|		|	|		|---|		|
+--------|		|---|		|	|		|----
+  |0>	| H^xn  |	|  U_f	|---|	H^xn|	Измерение
+--------|		|---|		|	|		|----
+
+
+--------|	H	|---|		|---
+
+U_f|x1,...,xn,y> = |x1,...,xn> x |y x f(x1,...,xn)>
+H^xn |0,...,0> = 1/2^(n/2) sum|x> (x from F^n_2)
+
+H|1> = (|0> - |1>)/sqrt(2)
+|phi_1> = (1/2^(n/2)(sum |x>(x from F^n_2))) x (|0> - |1>)/sqrt(2)
+|phi_2> = U_f|phi_1> =  (1/2^(n/2) sum|x>(x from F^n_2)) x (|f(x)>-(!f(x)))/sqrt(2) = 
+{(1/2^(n/2) sum|x>(x from F^n_2) x (|0>-|1>)/sqrt(2)), f(x)=0;(1/2^(n/2) sum|x>(x from F^n_2) x -(|0>-|1>)/sqrt(2)), f(x)=1} = 
+= (1/2^(n/2) sum (-1)^f(x)(x from f^n_2)) x (|0>-|1>)/sqrt(2)
+
+|y x f(x)> = {f(x), если |y> = |0>; !f(x), если |y> = |1>}
+|y> = alpha|0> + beta|1>
+|y from f(x)> = alpha|f(x)> + beta|!f(x)>
+
+phi_3 = H^xn|phi_2> = (1/2^(n/2) sum(-1)^f(x) • 1/2^(n/2) sum(-1)^<y,x> • |y>) x (|0>-|1>)/sqrt(2)
+<y,x>  = {0, #{i|x_i != y_i} - чётно; 1, #{i, x_i != y_i} - нечётно
+
+x_0(y) = {x from F^n_2|<y,x> = 0}
+x_1(y) = {x from F^n_2|<y,x> = 1}
+x_0(y) U x_1(y) = F^n_2 и x0(y) /\ x1(y) = null
+(0,x2,...,xn) from x_0(y) => (1,x2,...,xn) from x1_(y) => |x0(y)| = |x1(y)| = 2^n/2
+
+|phi_3> = (1/2^(n) sum|y>(sum(-1^f(x))(x from x_0(y)) - sum(-1)^f(x))) x (|0>-|1>)/sqrt(2)
+a)f from C
+
+alpha_y = {(-1)^f(0)*2^n, y = 0; (-1)^f(0)(2^(n+1 -||y||) - 2^(||y||-1))

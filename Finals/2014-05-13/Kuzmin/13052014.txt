@@ -1,0 +1,105 @@
+13.05.2014
+Перестановки. Размещения. Сочетания. Размещения с повторениями(++). Сочетания с повторениями.
+1. Возможны ли повторения ++-- 
+2. Существенен порядок +-+-
+Перестановки 
+Если количество перестановок известно для n-1 = (n-1)!. Тогда следующий элемент можем расставить n способами.
+Размещения - 
+A^k_n - число размещений из n по k.
+Число способов выбрать набор из n исходных элементов длины k.
+A^k_n = n!/(n-k)!
+Сочетания - количество подмножеств из n начальных элементов мощности k.
+Обоснование формулы из A^k_n. Так как от перестановки элементов множество не меняется, то группируем все перестановки и их получается ещё k! штук. Поэтому дополнительно делим на k!.
+Размещения с повторениями
+~A^k_n = n^k
+Сочетания с повторениями
+С^k_(n+k-1)
+
+Треугольник Паскаля. Биномиальная теорема
+(a+b)^n
+n = 1 a + b
+n = 2 a^2 + 2ab + b^2
+n = 3 a^3 + 3(a^2)b + 3a(b^2)
+C^k_n = C^(k-1)_(n-1) + C^k_(n-1)
+(a+b)^n = sum(C^i_n•a^i•b^(n-i))(n from 0 to n)
+Докажем по индукции
+n = 0 (a+b)^0 = sum(С^i_0a^ib^0-i) = 1
+
+(a+b)^n = (a+b)^(n-1)•(a+b) = sum(C^i_(n+1)a^ib^(n-1-i))•(a+b) = sum(C^i_(n-1)a^(i+1)b^(n-1-i)) + sum(C^i_(n-i)a^i b^(n-i))(n from 0 to n-1) =
+= sum(C^(i-1)_(n-1)a^ib^(n-i))(sum from 1 to n) + sum(C^i_(n-i)a^i b^(n-i)) = sum(C^(i-1)_(n-1)a^i•b^(n-i)) + sum(C^i_(n-1)a^ib^(n-i))
+sum(C^(i-1)_(n-i) + C^i_(n-1))a^ib^(n-i) = sum(C^i a^i b^(n-i))
+
+Принцип включения-исключения. Диаграмма Эйлера.
+Имеется n свойства. Часть объектов обладает одним свойством, часть двумя, часть тремя и так далее. Найти мощность множества обладающего всемя свойствами.
+Имеется 2^n вариантов
+
+|A U B U C| = |A|+|B|+|C| - |A/\B| - |A/\C| - |B/\C| + |A/\B/\C|
+|U(A_i)(i from 1 to n)| = sum(-1)^(n+1)(/\{A_(tau_j)|tau from E^n, |tau| = i, t_j = 1}(i from 1 to n))
+
+
+
+void radix_sort(int* begin, int*end){
+	const size_t n = end-begin;
+	vector<int> tmp(n);//Создание массива из n элементов за n
+	//d - количество разрядов в числе
+	//2^b - основание системы счисления
+	for(int i = 0; i<d; ++i){ O(d)
+		vector<int> q((1<<b)+1,0); O(d)
+		for(int *p = begin; p != end; ++p){ O(d)
+			q[1 + *p/(1<<(b*i))%(1<<b)]++;
+		}
+		for(int j = 0; j<(1<<b);++j){ O(d)
+			q[j+1]+=q[j];
+		}
+		for(int *p = begin; p!= end; p++){ O(dn)
+			tmp[q[*p/(1<<(b*i))%(1<<b)]++] = *p;
+		}
+		for(int j = 0; *p = begin; p!= end;++p){ O(dn)
+			*p = tmp[j];
+		}
+	}
+}
+
+Списки смежности 
+G = <V,E>, E from V^2
+Пусть V = {0,1,2...,k-1}, k = |v|
+
+class AdjList{
+	vector<list<int> > lst;
+	public:
+		AdjList(int k) : lst(k) {}
+		void addEdge(int a,int b){
+			auto p = lower_bound(lst[a].begin(),lst[a].end(),b);
+			if(p!=lst[a].end && *p == b)
+				return;
+			lst[a].insert(p,b); if(a == b) return;
+			auto q = lower_bound(lst[b].begin(),lst[b].end(),a);
+			lst[b].insert(q,a);
+		}
+}
+d(v) - число вершин, смежных с v
+lst[v].size() = d(v)
+Space(G) = teta(|v|) + sum(d(v)) = teta(|v|) + 2|E| = teta(|v|+|E|)
+Если G - связный, то |v|<= |E| + 1
+Space(G) = teta(|E|)
+
+Обход в глубину
+Цвет вершины
+color(v) = {white, если вершина не посещена; grey, если вершина не до конца обследована; black - полностью обошли вершину}
+
+Пусть G = <V,E> - граф, A(v) = {(v,u) | (v,u) from E}
+function DeepWalking
+	for each v from V: teta(|V|)
+		if color(v) == white:
+			WalkThrough(v)
+
+function WalkThrough(v):
+	color(v):= grey;	teta(|v|)
+	foreach u from A(v): teta(sum|A(v)|)
+		if color(u) == white:
+			WalkThrough(u)
+	color(v):= black		teta|v|
+	
+sum(A(v)) = 2|E|
+Time(G) = teta(|V|+|E|)
+Если G - связный, то Time(G) = teta(|E|)

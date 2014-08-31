@@ -1,0 +1,9 @@
+17.10.2013
+F_inf_1 from F_0_1
+r from F_inf_1 => f from F_0_1
+F_0_1 = [p*,0,d_n*]
+f from [p*,0,V]
+p*(x,y,z) = (y<-| z) <-|x, x V y = p(x,y,0) и x<-| y = p(0,x,y).
+p(0,x,y) = 0 V !xy
+p(x,y,0) = x V !y*0
+p(x,0,y) = x V 1*y

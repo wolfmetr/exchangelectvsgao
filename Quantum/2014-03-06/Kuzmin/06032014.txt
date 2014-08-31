@@ -1,0 +1,40 @@
+06.03.2014
+UU* = E.
+Квантовые схемы.
+С^2^n = C^2 x ... C^2 {n times}
+C^2 x C^2 {|00>,|01>, |10>,|11>}
+(alpha_0|0> + alpha_1|1>) x (beta_0|0> + beta_1|1>) = 
+alpha_0beta_0|00> + alpha_0beta_1|01> + alpha_1beta_0|10> alpha_1beta_1|11>
+
+|x> = alpha_0|0> + alpha_1|1> = [alpha0,alpha1].
+|y> = beta_0|0> + beta_1|1> = [beta0,beta1].
+|x> x |y> = [alpha0beta0,alpha_0beta1,alpha_1beta0,alpha1beta1]
+
+|1| |0| |0| |0|
+|0| |1| |0| |0|
+|0| |0| |1| |0|
+|0| |0| |0| |1|
+ ↓   ↓
+|1| |0| |0| |0|
+|0| |1| |0| |0|
+|0| |0| |0| |1|
+|0| |0| |1| |0|
+
+		|1 0 0 0|	|1 0 0 0|
+		|0 1 0 0|	|0 1 0 0|
+U = U • |0 0 1 0| = |0 0 0 1|
+		|0 0 0 1|	|0 0 1 0|
+		
+U* = U
+
+			|1 0 0 0|
+UU* = U•U = |0 1 0 0| = E
+			|0 0 1 0|
+			|0 0 0 1|
+			
+U(|x> x ||y>) = 
+=|1 0 0 0| |alpha0beta0| = |alpha0beta0|
+ |0 1 0 0| |alpha0beta1|   |alpha0beta1|
+ |0 0 0 1| |alpha1beta0|   |alpha1beta1|
+ |0 0 1 0| |alpha1beta1|   |alpha1beta0|
+ 

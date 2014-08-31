@@ -1,0 +1,40 @@
+28.01.2014
+c = 4 + 3i
+|c| = sqrt(4*4 + 3*3) = 5
+Доказать, что for all c1,c2 |c1+c2| <= |c1| + |c2|
+Доказать, что
+1)(с1+с2)^~ = c1^~ + c2^~
+2)(с1*с2)^~ = c1^~ * c2^~
+3)с+с^~ = |c|^2
+
+1)
+c1 = a1 + b1i
+c2 = a2 + b2i
+
+(c1+c2)^~ = ((a1+a2) + (b1+b2)i)^~ = (a1+a2) - (b1+b2)i
+c1^~ + c2^~ = a1 - b1i + a2 - b2i = (a1+a2) - (b1+b2)i
+teta - угол наклона
+ro - длина вектора
+
+tg(teta) = b/a
+(a,b) -> (ro,teta)	ro = |c| = sqrt(a^2 + b^2)
+b = ro * sin(teta)
+a = ro * cos(teta)
+c1 = a1 + b1i	(ro1,teta_1)
+c2 = a2 + b2i 	(ro2,teta_2
+c = c1 * c2		(ro,teta)
+|c| = ro = sqrt((a1a2-b1b2)^2 + (a1b2+b1a1)^2) = sqrt(a1^2+b1^2) * sqrt(a2^2+b2^2)
+ro = ro1 * ro2
+tg(teta) = (a1b2 + b1a2)/(a1a2-b1b2)
+tg(teta1 + teta2) = (sin(teta1+teta2))/(cos(teta1+teta2)) = (tg(teta1) + tg(teta2))/(1 - tg(teta1)*tg(teta2)) = (b1/a1 + b2/a2)/(1-b1b2/a1a2) = 
+= ((a2b1+b2a1)/a1a2)/((a1a2-b1b2)/a12) = (a1b2 + b1a2)/(a1a2-b1b2)
+teta = teta1 + teta2
+(ro1,teta1) x (ro2,teta2) = (ro1ro2,teta1 + teta2)
+
+Формула Эйлера
+e^(i•phi) = cos(phi) + i•sin(phi).
+ro•e^(i•phi) = ro•cos(phi) + ro•i•sin(phi).
+
+e^ix = 1 + ix/1! - x^2/2! - ix^3/3! + 1x^3/4!
+cos x = 1 
+isinx = ix/1 - ix^3/3 + ix^5/5!

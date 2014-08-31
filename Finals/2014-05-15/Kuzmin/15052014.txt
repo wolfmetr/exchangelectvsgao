@@ -1,0 +1,64 @@
+15.05.2014
+(beta join alpha){A,B}
+
+beta = B	A	E
+	   5    4   400
+	   5    2   200
+	   4    3   300
+	   2    4   500
+
+alpha = A 	C	D
+		3	4 	20
+		3	5	30
+		4	1	20
+		
+beta join alpha =	B	A	E	C	D
+					5	4	400	1	20
+					4	3	300	4	20
+					4	3	300	5	30
+					2	4	500	1	20
+(beta join alpha){A,B} = 	A	B
+							4	5
+							3	4
+							4	2
+							
+{A->B, AB->C,D->AC,D->E}
+
+A -> ABC
+B -> B
+C -> C
+D -> DACBE - потенциальный ключ
+E -> E
+AB -> ABC
+AC -> ABC
+AE -> ABCE
+
+1НФ+,2НФ+,3НФ-, НФБК-.
+
+2НФ = 1НФ и каждый неключевой атрибут неприводимо зависит от потенциального ключа.
+Если AD - потенциальный ключ A->C,С - неключевой, то AD->C - не явл. неприводимым
+3НФ = 2НФ и каждый неключевой атрибут нетранзитивно зависим от потенциального ключа.
+
+S = {A,B,C,D,E}
+	 |		 |
+	\|/     \|/
+	S1		S2
+Так, что S1 JOIN S2 = S
+S1,S2 в НФБК
+НФБК = в неприводимом мн-ве функ-ых зав-ей левая часть каждого
+
+SELECT 
+	Students.name, Exam.mark
+FROM
+	Students
+	JOIN Exam
+		ON Students.id = Exam.idStudent
+	JOIN Groups
+		ON Student.idGroup = Groups.id
+	WHERE
+		Groups.Number = '4И'
+		AND
+		Exam.Name LIKE 'Функ%'
+		
+CREATE TABLE Groups(id)
+

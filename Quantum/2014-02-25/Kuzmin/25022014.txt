@@ -1,0 +1,43 @@
+25.02.2014
+Яновский, Мануччи - Quantum computer for scientists
+|psi> = c1|x1> + ... + cn|xn>
+P_psi(x_i) = |c_i|^2/sum|c_j|^2(from 1 to n)
+P_|c*psi>(x_i) = P_|psi>(x_i) for all c from C
+Нормализованная квантовая суперпозиция.
+|psi> такое, что sum|c_j|^2 = 1.
+P_|psi>(x_i) = |c_i|^2
+Пусть |psi> - произвольная к.с.
+Тогда |c*psi>, где c = 1/sum|c_j|^2(j from 1 to n), является нормализованной к.с., неотличной от |psi> 
+|psi> = 1/sqrt(2) |↑> + 1/sqrt(2)|↓>
+Пусть |psi> = c1|x1> + ... + cn|xn> - кет. = |c1,...,cn|^T.
+Бра <phi| = |!c1,...,!cn| = |psi>*
+Скалярное произведение(бра на кет).
+< <phi|,|psi> > = <phi|psi> = [!d1,...,!dn] • |c1|
+											  |..|
+											  |cn| = sum(!di*c_i),
+где |phi> = d1|x1> + ... + d_n|xn>
+<psi|psi> = sum(!c_i•c_i) = sum|c_i|^2 = 1, если |psi> - нормализован
+
+|x_i> = 0|x1> + ... + 1|x_i> + ... + 0|x_n>
+<x_i|psi> = c_i
+Пусть |psi> = [-1,-1 - i]^T
+
+omega = |-1 -i|		omega|psi> = [i,-1-2i]^T
+		| i  1|
+omega - оператор в пространстве С^2.
+
+Матрица А - эрмитова, если A = A*(сопряженной).
+Пусть A - эрмитова. Тогда for all v from C^n
+<v,Av> - вещественное.
+(Av)_i = sum(A_ij v_j)
+<v,Av> = sum(sum(!v_i A_ij v_j)) = sum(A_ii*!v_i*v_i) + sum(sum(A_ij!vivj) + sum(sum(A_ij!vi!vj) = sum(A_ii|vi|^2 + sum(sum(A_ij!vivj + aji!vjvi)) = 
+ = sum(A_ii|v_i|^2 + sum(sum((A_ijvj)vj + !((Aij vj)!vj)))
+ c+!c = a+bi+a = 2a
+ c= !c
+ c = a+bi = a-bj = !c <=> b = 0.
+<psi,omega•psi> = <omega>_psi - ожидаемое значение повторяемого наблюдения omega за соcтоянием |psi>
+<[-1,-1+i, omega, |-1  |> = 3
+				  |-1-i|
+				  
+Постулат. Пусть omega - наблюдение и |psi> - квантовое состояние. Если при изменении omega получилось собств. зачение alpha, то |psi> после измерения переходит
+в состояние, которое есть собственный вектор omega, соответств. alpha
